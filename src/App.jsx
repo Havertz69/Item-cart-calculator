@@ -7,8 +7,8 @@ function App() {
   const [unitPrice, setUnitPrice] = useState("");
   const [items, setItems] = useState([]);
 
-  const handleAddItem = (ev) => {
-    ev.preventDefault();
+  const handleAddItem = (e) => {
+    e.preventDefault();
     if (!item || !quantity || !unitPrice) return;
 
     const newItem = {
@@ -105,10 +105,20 @@ function App() {
       </div>
 
       {items.length > 0 && (
-        <div className="card total-card">
-          <span>Grand Total:</span>
-          <strong className="grand-amount">KES {grandTotal.toFixed(2)}</strong>
-        </div>
+        <>
+          <div className="card total-card">
+            <span>Grand Total:</span>
+            <strong className="grand-amount">
+              KES {grandTotal.toFixed(2)}
+            </strong>
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "1rem" }}>
+            <button className="print-btn" onClick={() => window.print()}>
+              🖨️ Print
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
